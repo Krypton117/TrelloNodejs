@@ -1,0 +1,19 @@
+doctype
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type='text/javascript' src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js')
+    script(src="https://api.trello.com/1/client.js?key=326ecc8e5aaeba3263fabd5da2947bcb")
+    script(src="/javascripts/trello-auth.js") 
+  body  
+    div#loggedout
+        a#connectLink(href='#') Log in Trello
+    div#loggedin
+        div#header
+            p Ingelogd als 
+                span#fullName
+                a#disconnect(href='#') Uitloggen
+        div#output
+
+              
