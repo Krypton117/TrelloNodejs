@@ -15,11 +15,20 @@ var onAuthorize = function() {
         Trello.get("/boards/fL21zLO6/cards", function(cards) {
             $cards.empty();
             $.each(cards, function(ix, card) {
-                $("<a>")
-                .attr({href: card.url, target: "trello"})
+                //$("<a>")
+                //.attr({href: card.url, target: "trello"})
+                $("<button>")
+                .attr({ href: "#", target: "trello"})
                 .addClass("card")
                 .text(card.name)
-                .appendTo($cards);
+                .appendTo($cards)
+                .click(function(){
+                    var userstory = prompt("Please edit your userstory:", "Enter new userstory");
+  
+                    Trello.put("cards/" + card.id + "", { name: userstory })
+                    
+                });
+                
             });  
         });
     });
@@ -46,7 +55,8 @@ $("#connectLink")
 .click(function(){
     Trello.authorize({
         type: "popup",
-        success: onAuthorize
+        success: onAuthorize,
+        scope: { write: true, read: true }
     })
 });
     

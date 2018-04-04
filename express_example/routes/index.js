@@ -5,6 +5,9 @@ router.get('/', function(req, res){
   res.render('index', {
     title: 'Home'
   });
+  res.render(__dirname + '/views/layout.jade', {
+    view_data: newJson,
+});
 });
 
 router.get('/about', function(req, res){
@@ -18,5 +21,7 @@ router.get('/contact', function(req, res){
     title: 'Contact'
   });
 });
+
+
 
 module.exports = router;
